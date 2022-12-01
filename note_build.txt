@@ -1,0 +1,31 @@
+https://segmentfault.com/a/1190000040499014
+
+mkdir build
+mkdir build/data
+
+-DCMAKE_BUILD_TYPE=Debug
+-DDOWNLOAD_BOOST=1
+-DWITH_BOOST=/home/hw470/Documents/Work/db/mysql_boost
+-DCMAKE_INSTALL_PREFIX=/home/hw470/Documents/Work/db/mysql-server/build 
+-DMYSQL_DATADIR=/home/hw470/Documents/Work/db/mysql-server/build/data 
+-DSYSCONFDIR= /home/hw470/Documents/Work/db/mysql-server/build
+-DMYSQL_UNIX_ADDR=/home/hw470/Documents/Work/db/mysql-server/build/data/mysql.sock
+
+# 创建 MySQL 用户组和 MySQL 用户
+sudo groupadd mysql
+sudo useradd -r -g mysql -s /bin/false mysql
+# MySQL 数据库初始化
+cd /home/code/mysql-server-mysql-8.0.25/build/bin
+
+./mysqld --basedir=/home/hw470/Documents/Work/db/mysql-server/build \
+--datadir=/home/hw470/Documents/Work/db/mysql-server/build/data \
+--initialize-insecure --user=mysql
+
+sudo chmod -R 777 /home/hw470/Documents/Work/db/mysql-server/build/data
+
+--basedir=/home/hw470/Documents/Work/db/mysql-server/build --datadir=/home/hw470/Documents/Work/db/mysql-server/build/data --user=mysql
+
+/home/hw470/Documents/Work/db/mysql-server/build/data
+
+# debug
+./build/bin/mysql -uroot -h127.0.0.1 -P3306 -p
